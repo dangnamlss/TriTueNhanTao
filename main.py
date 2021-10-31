@@ -22,22 +22,21 @@ data7 = ds.read(7)  #doc band 7
 #TINH MIN, MAX, MEAN, MEDIAN, STD CUA TUNG BAND
 #Vi du Band 1
 import numpy
-print("Max:")
-print(numpy.nanmax(data1))
-print("Min:")
-print(numpy.nanmin(data1))
-print("Mean:")
-print(numpy.nanmean(data1))
-print("Median:")
-print(numpy.nanmedian(data1))
-print("Std:")
-print(numpy.nanstd(data1))
+# print("Max:")
+# print(numpy.nanmax(data1))
+# print("Min:")
+# print(numpy.nanmin(data1))
+# print("Mean:")
+# print(numpy.nanmean(data1))
+# print("Median:")
+# print(numpy.nanmedian(data1))
+# print("Std:")
+# print(numpy.nanstd(data1))
 
 #TINH CHI SO NDVI, NDWI
 red = data4
 green = data3
 nir = data5 #band 5 - near infrared
-swir = data6 #band 6 - shortwave infrared
 
 ndviValueList = [] #ndvi = (nir - red) / (nir + red)
 ndwiValueList = [] #ndwi = (nir - swir) / (nir + swir)
@@ -51,7 +50,7 @@ for i in range(0, red.shape[0], 1):
             arr2.append(None)
             continue
         value1 = (nir[i][j] - red[i][j]) / (nir[i][j] + red[i][j])
-        value2 = (nir[i][j] - swir[i][j]) / (nir[i][j] + swir[i][j])
+        value2 = (green[i][j] - nir[i][j]) / (green[i][j] + nir[i][j])
         arr1.append(value1)
         arr2.append(value2)
     ndviValueList.append(arr1)
